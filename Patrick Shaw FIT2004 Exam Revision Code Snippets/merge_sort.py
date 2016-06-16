@@ -1,8 +1,9 @@
 import time
-
+from insertion_sort import insertion_sort
 
 def merge_sort(a_list):
-    if len(a_list) <= 1:
+    if len(a_list) <= 5:
+        insertion_sort(a_list)
         return a_list
     mid = len(a_list) // 2
     p1 = a_list[mid:]

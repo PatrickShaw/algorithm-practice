@@ -4,6 +4,8 @@ from insertion_sort import *
 from quick_sort import *
 from merge_sort import *
 from binary_radix_sort import *
+from heap_sort import *
+from bubble_sort import *
 
 class StabilityUnit:
     def __init__(self, value, stability_value):
@@ -598,7 +600,7 @@ def test_properties(correct, tested):
     is_stable = True
     for i in range(len(correct)):
         if correct[i] != tested[i]:
-            print("INCORRECT")
+            print("INCORRECT: index({0}), {1} should be {2}".format(str(i), str(tested[i]), str(correct[i])))
             return
         if correct[i].stability_value != tested[i].stability_value:
             is_stable = False
@@ -663,4 +665,25 @@ quick_sort(quick_sorted_list)
 b = time.time()
 print(b - a)
 print_list(quick_sorted_list)
-test_properties(sorted, merge_sorted_list)
+test_properties(sorted, quick_sorted_list)
+print()
+
+print("Max heap sorted: ")
+max_heap_sorted_list = list(original)
+a = time.time()
+max_heap_sorted_list = max_heap_sort(max_heap_sorted_list)
+b = time.time()
+print(b - a)
+max_heap_sorted_list = list(reversed(max_heap_sorted_list))
+print_list(max_heap_sorted_list)
+test_properties(sorted, max_heap_sorted_list)
+print()
+
+print("Bubble sorted: ")
+bubble_sorted_list = list(original)
+a = time.time()
+bubble_sort(bubble_sorted_list)
+b = time.time()
+print(b - a)
+print_list(bubble_sorted_list)
+test_properties(sorted, bubble_sorted_list)
