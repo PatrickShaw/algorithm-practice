@@ -1,6 +1,5 @@
-from binary_search_tree import BinarySearchNode
-from binary_tree import BinaryNode
-
+from .binary_search_tree import BinarySearchNode
+from .binary_tree import BinaryNode
 
 class AVLNode(BinarySearchNode):
     def __init__(self, value, left=None, right=None, parent=None, height=0):

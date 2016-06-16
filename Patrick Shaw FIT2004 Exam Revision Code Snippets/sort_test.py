@@ -1,9 +1,9 @@
 import numbers
-
-from binary_radix_sort import binary_radix_sort
-from insertion_sort import insertion_sort
-from merge_sort import merge_sort
-from selection_sort import selection_sort
+from selection_sort import *
+from insertion_sort import *
+from quick_sort import *
+from merge_sort import *
+from binary_radix_sort import *
 
 class StabilityUnit:
     def __init__(self, value, stability_value):
