@@ -36,8 +36,8 @@ def binary_search_iterative_sub_list(a_list, value, min, max):
 
 
 if __name__ == "__main__":
-    a_list = [x for x in range(100)]
-    print(a_list)
+    test_list = [x for x in range(100)]
+    print(test_list)
     while True:
         integer = int(input("Search for a value: "))
-        print(binary_search(a_list, integer))
+        print(binary_search(test_list, integer))

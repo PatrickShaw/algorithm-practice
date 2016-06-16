@@ -594,13 +594,15 @@ original = [StabilityUnit(1, "a"),
             StabilityUnit(999, "a"),
             ]
 
-def test_stability(correct, tested):
-    is_correct = True
+def test_properties(correct, tested):
+    is_stable = True
     for i in range(len(correct)):
         if correct[i] != tested[i]:
             print("INCORRECT")
             return
-    print("Correct")
+        if correct[i].stability_value != tested[i].stability_value:
+            is_stable = False
+    print("Correct, " + ("stable" if is_stable else "unstable"))
 
 import time
 print_list(original)
@@ -621,7 +623,7 @@ selection_sort(selection_sorted_list)
 b = time.time()
 print(b - a)
 print_list(selection_sorted_list)
-test_stability(sorted, selection_sorted_list)
+test_properties(sorted, selection_sorted_list)
 print()
 
 print("Insertion sorted: ")
@@ -631,7 +633,7 @@ insertion_sort(insertion_sorted_list)
 b = time.time()
 print(b - a)
 print_list(insertion_sorted_list)
-test_stability(sorted, insertion_sorted_list)
+test_properties(sorted, insertion_sorted_list)
 print()
 
 print('Radix sorted: ')
@@ -641,7 +643,7 @@ binary_radix_sorted_list = binary_radix_sort(binary_radix_sorted_list)
 b = time.time()
 print(b - a)
 print_list(binary_radix_sorted_list)
-test_stability(sorted, binary_radix_sorted_list)
+test_properties(sorted, binary_radix_sorted_list)
 print()
 
 print("Merge sorted: ")
@@ -649,7 +651,16 @@ merge_sorted_list = list(original)
 a = time.time()
 merge_sorted_list = merge_sort(merge_sorted_list)
 b = time.time()
-print(b - 1)
+print(b - a)
 print_list(merge_sorted_list)
-test_stability(sorted, merge_sorted_list)
+test_properties(sorted, merge_sorted_list)
 print()
+
+print("Quick sorted: ")
+quick_sorted_list = list(original)
+a = time.time()
+quick_sort(quick_sorted_list)
+b = time.time()
+print(b - a)
+print_list(quick_sorted_list)
+test_properties(sorted, merge_sorted_list)

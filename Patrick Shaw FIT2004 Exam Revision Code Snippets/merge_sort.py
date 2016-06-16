@@ -5,8 +5,8 @@ def merge_sort(a_list):
     if len(a_list) <= 1:
         return a_list
     mid = len(a_list) // 2
-    p1 = a_list[:mid]
-    p2 = a_list[mid:]
+    p1 = a_list[mid:]
+    p2 = a_list[:mid]
     p1 = merge_sort(p1)
     p2 = merge_sort(p2)
     i = 0
