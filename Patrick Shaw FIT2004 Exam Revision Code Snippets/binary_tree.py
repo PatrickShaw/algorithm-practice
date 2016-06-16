@@ -57,7 +57,19 @@ class BinaryNode:
         traversed_nodes.append(self.value)
         return traversed_nodes
 
-
+    @property
+    def is_binary_search_tree(self):
+        if self.left is None and self.right is None:
+            return True
+        elif self.left is None:
+            return self.right.is_binary_search_tree if self.value < self.right.value else False
+        elif self.right is None:
+            return self.left.is_binary_search_tree if self.value >= self.left.value else False
+        else:
+            if self.left.value <= self.value < self.right.value:
+                return self.left.is_binary_search_tree and self.right.is_binary_search_tree
+            else:
+                return False
 
 if __name__ == "__main__":
     root = BinaryNode("f")
@@ -84,4 +96,8 @@ if __name__ == "__main__":
     print("".join(root.prefix_traversal))
     print("".join(root.infix_traversal))
     print("".join(root.postfix_traversal))
+    print(root.is_binary_search_tree)
+    a = BinaryNode("a")
+    k.right = a
+    print(root.is_binary_search_tree)
 

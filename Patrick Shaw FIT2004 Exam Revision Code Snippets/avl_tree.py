@@ -1,7 +1,8 @@
+from binary_search_tree import BinarySearchNode
 from binary_tree import BinaryNode
 
 
-class AVLNode(BinaryNode):
+class AVLNode(BinarySearchNode):
     def __init__(self, value, left=None, right=None, parent=None, height=0):
         super().__init__(value, left, right)
         self.__parent = parent
@@ -81,8 +82,17 @@ class AVLNode(BinaryNode):
         self.parent = original_left_child
         original_left_child.parent = original_parent
 
+    @property
+    def subtree_height_difference(self):
+        height_difference = (0 if self.left is None else self.left.height) - (0 if self.right is None else self.right.height)
+        return height_difference
+
+    def rebalance(self):
+        # TODO
+        pass
+
     def append(self, other):
-        if self.value <= other.value:
+        if other.value <= self.value:
             if self.left is None:
                 self.left = other
                 self.rebalance()
@@ -94,15 +104,6 @@ class AVLNode(BinaryNode):
                 self.rebalance()
             else:
                 self.right.append(other)
-
-    @property
-    def subtree_height_difference(self):
-        height_difference = (0 if self.left is None else self.left.height) - (0 if self.right is None else self.right.height)
-        return height_difference
-
-    def rebalance(self):
-        # TODO
-        pass
 
     def __add__(self, other):
         self.append(other)
@@ -135,3 +136,4 @@ if __name__ == "__main__":
     print("".join(root.postfix_traversal))
     print(root.height)
     print(h.height)
+    print(root.is_binary_search_tree)
