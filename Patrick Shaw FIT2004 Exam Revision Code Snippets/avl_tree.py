@@ -137,3 +137,5 @@ if __name__ == "__main__":
     print(root.height)
     print(h.height)
     print(root.is_binary_search_tree)
+    print(root.has_value("k"))
+    print(root.has_value("z"))
