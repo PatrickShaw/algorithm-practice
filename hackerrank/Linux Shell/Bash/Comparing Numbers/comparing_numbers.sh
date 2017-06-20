@@ -1,3 +1,4 @@
+#!/bin/bash
 read x
 read y
 if [ $x -lt $y ]; then
