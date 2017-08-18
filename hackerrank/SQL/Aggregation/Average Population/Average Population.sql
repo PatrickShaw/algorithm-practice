@@ -1,0 +1,1 @@
+SELECT floor(avg(population)) from city;
