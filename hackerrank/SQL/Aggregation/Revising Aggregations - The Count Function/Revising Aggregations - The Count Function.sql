@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM CITY where population > 100000;
